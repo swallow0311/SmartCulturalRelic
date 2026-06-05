@@ -44,7 +44,7 @@ const ContactList = ({ onAdd, onEdit }: ContactListProps) => {
                 <TableHead className="border-b">姓名</TableHead>
                 <TableHead className="border-b">所属单位</TableHead>
                 <TableHead className="border-b">联系电话</TableHead>
-                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap">操作</TableHead>
+                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -53,7 +53,7 @@ const ContactList = ({ onAdd, onEdit }: ContactListProps) => {
                   <TableCell className="font-bold whitespace-nowrap">{contact.name}</TableCell>
                   <TableCell className="whitespace-nowrap">{contact.unit}</TableCell>
                   <TableCell className="whitespace-nowrap text-indigo-600">{contact.phone}</TableCell>
-                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap">
+                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
                     <div className="flex items-center gap-2 px-4 justify-center">
                       <Button variant="ghost" size="sm" className="text-blue-600 h-8 px-2" onClick={() => onEdit(contact)}><Edit className="w-3.5 h-3.5 mr-1" />编辑</Button>
                       <Button variant="ghost" size="sm" className="text-red-600 h-8 px-2" onClick={() => setDeleteItem(contact)}><Trash2 className="w-3.5 h-3.5 mr-1" />删除</Button>

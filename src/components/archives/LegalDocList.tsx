@@ -42,7 +42,7 @@ const LegalDocList = ({ onAdd, onEdit, onDetail }: LegalDocListProps) => {
                 <TableHead className="border-b whitespace-nowrap">责任方</TableHead>
                 <TableHead className="border-b whitespace-nowrap">添加人</TableHead>
                 <TableHead className="border-b whitespace-nowrap">添加时间</TableHead>
-                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap">操作</TableHead>
+                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -53,7 +53,7 @@ const LegalDocList = ({ onAdd, onEdit, onDetail }: LegalDocListProps) => {
                   <TableCell className="whitespace-nowrap">{item.party}</TableCell>
                   <TableCell className="whitespace-nowrap">{item.creator}</TableCell>
                   <TableCell className="text-slate-500 whitespace-nowrap">{item.addTime}</TableCell>
-                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap">
+                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
                     <div className="flex items-center gap-2 px-4 justify-center">
                       <Button variant="ghost" size="sm" className="text-blue-600 h-8 px-2" onClick={() => onDetail(item)}>详情</Button>
                       <Button variant="ghost" size="sm" className="text-slate-600 h-8 px-2" onClick={() => onEdit(item)}>编辑</Button>

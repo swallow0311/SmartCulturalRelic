@@ -43,7 +43,7 @@ const EquipmentList = ({ onAdd, onEdit, onDetail }: EquipmentListProps) => {
                 <TableHead className="border-b whitespace-nowrap">设备编码</TableHead>
                 <TableHead className="border-b whitespace-nowrap">名称</TableHead>
                 <TableHead className="border-b whitespace-nowrap">状态</TableHead>
-                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-12px_0_15px_-5px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap">操作</TableHead>
+                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-12px_0_15px_-5px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -52,7 +52,7 @@ const EquipmentList = ({ onAdd, onEdit, onDetail }: EquipmentListProps) => {
                   <TableCell className="font-medium whitespace-nowrap">{item.code}</TableCell>
                   <TableCell className="whitespace-nowrap">{item.name}</TableCell>
                   <TableCell className="whitespace-nowrap"><Badge className="bg-green-50 text-green-700 border-green-200">{item.status}</Badge></TableCell>
-                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-12px_0_15px_-5px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap">
+                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-12px_0_15px_-5px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
                     <div className="flex items-center gap-2 px-4 justify-center">
                       <Button variant="ghost" size="sm" className="text-blue-600 h-8 px-2" onClick={() => onDetail(item)}>详情</Button>
                       <Button variant="ghost" size="sm" className="text-slate-600 h-8 px-2" onClick={() => onEdit(item)}>编辑</Button>

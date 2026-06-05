@@ -85,7 +85,7 @@ const ApprovalList = ({ onDetail }: ApprovalListProps) => {
                 <TableHead className="w-32 border-b">关联文物</TableHead>
                 <TableHead className="w-24 border-b">方案状态</TableHead>
                 <TableHead className="w-40 border-b">提审时间</TableHead>
-                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-left w-48 border-b border-l pl-6">操作</TableHead>
+                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -103,8 +103,8 @@ const ApprovalList = ({ onDetail }: ApprovalListProps) => {
                     </Badge>
                   </TableCell>
                   <TableCell className="text-slate-500 whitespace-nowrap">{item.submitTime}</TableCell>
-                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap">
-                    <div className="flex items-center gap-2 px-4">
+                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
+                    <div className="flex items-center gap-2 px-4 justify-center">
                       <Button variant="ghost" size="sm" className="text-blue-600 h-8 px-2" onClick={() => onDetail(item)}>
                         <Eye className="w-3.5 h-3.5 mr-1" /> 详情
                       </Button>

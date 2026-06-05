@@ -46,7 +46,7 @@ const RecordList = ({ onAdd, onDetail, onAddDetail }: RecordListProps) => {
                 <TableHead className="border-b">项目名称</TableHead>
                 <TableHead className="border-b">责任人</TableHead>
                 <TableHead className="border-b">修缮进度</TableHead>
-                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center w-64 border-b border-l">操作</TableHead>
+                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -62,7 +62,7 @@ const RecordList = ({ onAdd, onDetail, onAddDetail }: RecordListProps) => {
                       <Progress value={item.progress} className="h-1.5" />
                     </div>
                   </TableCell>
-                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap">
+                  <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
                     <div className="flex items-center justify-center gap-2 px-4">
                       <Button variant="ghost" size="sm" className="text-indigo-600 h-8 px-2" onClick={() => onAddDetail(item)}>
                         <PlusCircle className="w-3.5 h-3.5 mr-1" /> +记录

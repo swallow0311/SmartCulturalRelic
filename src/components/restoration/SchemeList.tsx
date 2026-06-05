@@ -73,7 +73,7 @@ const SchemeList = ({ onAdd, onEdit, onDetail, onAddVersion }: SchemeListProps) 
                 <TableHead className="w-64 border-b">方案名称</TableHead>
                 <TableHead className="w-32 border-b">方案类型</TableHead>
                 <TableHead className="w-32 border-b">方案状态</TableHead>
-                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center w-40 border-b border-l">操作</TableHead>
+                <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -90,7 +90,7 @@ const SchemeList = ({ onAdd, onEdit, onDetail, onAddVersion }: SchemeListProps) 
                     <TableCell className="border-b">
                       <Badge className="bg-green-50 text-green-700 border-green-200">{item.status}</Badge>
                     </TableCell>
-                    <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap">
+                    <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
                       <div className="flex items-center gap-2 px-2 justify-center">
                         <Button variant="ghost" size="sm" className="text-blue-600 h-8 px-2" onClick={() => onDetail(item)}><Eye className="w-3.5 h-3.5 mr-1" />详情</Button>
                         <Button variant="ghost" size="sm" className="text-slate-600 h-8 px-2" onClick={() => onEdit(item)}><Edit className="w-3.5 h-3.5 mr-1" />编辑</Button>
