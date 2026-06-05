@@ -4,10 +4,8 @@ import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Plus, ChevronDown, ChevronUp, Edit, Trash2, History, Eye } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search, Plus, ChevronDown, ChevronUp, Edit, Trash2, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { showSuccess } from "@/utils/toast";
 
@@ -19,7 +17,6 @@ interface SchemeListProps {
 }
 
 const SchemeList = ({ onAdd, onEdit, onDetail, onAddVersion }: SchemeListProps) => {
-  const [showMoreSearch, setShowMoreSearch] = useState(false);
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   const [deleteItem, setDeleteItem] = useState<any>(null);
 
@@ -66,12 +63,12 @@ const SchemeList = ({ onAdd, onEdit, onDetail, onAddVersion }: SchemeListProps) 
 
       <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <Table className="min-w-[1400px] border-separate border-spacing-0">
+          <Table className="min-w-[1000px] border-separate border-spacing-0">
             <TableHeader className="bg-slate-50">
               <TableRow>
                 <TableHead className="w-12 border-b"></TableHead>
-                <TableHead className="w-64 border-b">方案名称</TableHead>
-                <TableHead className="w-32 border-b">方案类型</TableHead>
+                <TableHead className="border-b">方案名称</TableHead>
+                <TableHead className="w-48 border-b">方案类型</TableHead>
                 <TableHead className="w-32 border-b">方案状态</TableHead>
                 <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
@@ -91,14 +88,52 @@ const SchemeList = ({ onAdd, onEdit, onDetail, onAddVersion }: SchemeListProps) 
                       <Badge className="bg-green-50 text-green-700 border-green-200">{item.status}</Badge>
                     </TableCell>
                     <TableCell className="!sticky !right-0 bg-white z-40 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] group-hover:bg-slate-50 transition-colors border-l whitespace-nowrap w-1">
-                      <div className="flex items-center gap-2 px-2 justify-center">
+                      <div className="flex items-center gap-2 px-4 justify-center">
                         <Button variant="ghost" size="sm" className="text-blue-600 h-8 px-2" onClick={() => onDetail(item)}><Eye className="w-3.5 h-3.5 mr-1" />详情</Button>
                         <Button variant="ghost" size="sm" className="text-slate-600 h-8 px-2" onClick={() => onEdit(item)}><Edit className="w-3.5 h-3.5 mr-1" />编辑</Button>
                         <Button variant="ghost" size="sm" className="text-red-600 h-8 px-2" onClick={() => setDeleteItem(item)}><Trash2 className="w-3.5 h-3.5 mr-1" />删除</Button>
                       </div>
                     </TableCell>
                   </TableRow>
-                  {/* 版本展开行省略... */}
+                  {expandedIds.includes(item.id) && (
+                    <TableRow>
+                      <TableCell colSpan={5} className="bg-slate-50/50 p-4">
+                        <div className="border rounded-lg bg-white overflow-hidden shadow-sm">
+                          <Table>
+                            <TableHeader className="bg-slate-50">
+                              <TableRow>
+                                <TableHead className="w-20">版本</TableHead>
+                                <TableHead>技术路线</TableHead>
+                                <TableHead>主要材料</TableHead>
+                                <TableHead>工具设备</TableHead>
+                                <TableHead className="w-1 whitespace-nowrap text-right pr-6">操作</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              {item.versions.map((ver) => (
+                                <TableRow key={ver.id}>
+                                  <TableCell className="font-mono font-bold">{ver.versionNo}</TableCell>
+                                  <TableCell>{ver.route}</TableCell>
+                                  <TableCell>{ver.materials}</TableCell>
+                                  <TableCell>{ver.tools}</TableCell>
+                                  <TableCell className="w-1 whitespace-nowrap text-right pr-6">
+                                    <Button 
+                                      variant="link" 
+                                      size="sm" 
+                                      className="text-blue-600 p-0 h-auto"
+                                      onClick={() => onAddVersion(item)}
+                                    >
+                                      新增版本
+                                    </Button>
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                          </Table>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  )}
                 </React.Fragment>
               ))}
             </TableBody>

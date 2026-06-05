@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Search, ChevronDown, ChevronUp, CheckCircle2, XCircle, Eye } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Search, CheckCircle2, XCircle, Eye } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { showSuccess, showError } from "@/utils/toast";
@@ -19,7 +18,6 @@ interface ApprovalListProps {
 }
 
 const ApprovalList = ({ onDetail }: ApprovalListProps) => {
-  const [showMoreSearch, setShowMoreSearch] = useState(false);
   const [passItem, setPassItem] = useState<any>(null);
   const [rejectItem, setRejectItem] = useState<any>(null);
   const [rejectReason, setRejectReason] = useState("");
@@ -77,14 +75,14 @@ const ApprovalList = ({ onDetail }: ApprovalListProps) => {
 
       <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <Table className="min-w-[1600px] border-separate border-spacing-0">
+          <Table className="min-w-[1000px] border-separate border-spacing-0">
             <TableHeader className="bg-slate-50">
               <TableRow>
-                <TableHead className="w-64 border-b">方案名称</TableHead>
-                <TableHead className="w-32 border-b">方案类型</TableHead>
+                <TableHead className="border-b">方案名称</TableHead>
+                <TableHead className="w-40 border-b">方案类型</TableHead>
                 <TableHead className="w-32 border-b">关联文物</TableHead>
-                <TableHead className="w-24 border-b">方案状态</TableHead>
-                <TableHead className="w-40 border-b">提审时间</TableHead>
+                <TableHead className="w-28 border-b">方案状态</TableHead>
+                <TableHead className="w-44 border-b">提审时间</TableHead>
                 <TableHead className="!sticky !right-0 bg-slate-50 z-50 shadow-[-4px_0_10px_-3px_rgba(0,0,0,0.1)] text-center border-b border-l whitespace-nowrap w-1">操作</TableHead>
               </TableRow>
             </TableHeader>
