@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { MENU_DATA } from '@/constants/menuData';
 import { cn } from '@/lib/utils';
 import { User, Bell, ShieldCheck, ClipboardCheck, AlertTriangle, Clock } from 'lucide-react';
@@ -14,9 +14,12 @@ import { Badge } from "@/components/ui/badge";
 interface HeaderProps {
   activeModuleId: string;
   onModuleChange: (id: string) => void;
+  onNavigate?: (moduleId: string, menuId: string) => void;
 }
 
-const Header = ({ activeModuleId, onModuleChange }: HeaderProps) => {
+const Header = ({ activeModuleId, onModuleChange, onNavigate }: HeaderProps) => {
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
   // 模拟通知数据
   const pendingApprovals = [
     { id: '1', title: '太和殿屋顶修缮方案', time: '10分钟前' },
@@ -57,7 +60,7 @@ const Header = ({ activeModuleId, onModuleChange }: HeaderProps) => {
       </nav>
 
       <div className="ml-auto flex items-center gap-6">
-        <Popover>
+        <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
           <PopoverTrigger asChild>
             <button className="p-2 text-slate-300 hover:text-white transition-colors relative">
               <Bell size={20} />
@@ -77,8 +80,19 @@ const Header = ({ activeModuleId, onModuleChange }: HeaderProps) => {
                   <ClipboardCheck className="w-3 h-3" /> 待审批方案
                 </div>
                 {pendingApprovals.map((item) => (
-                  <div key={item.id} className="p-3 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors border border-transparent hover:border-slate-100">
-                    <p className="text-xs font-medium text-slate-700 mb-1">{item.title}</p>
+                  <div key={item.id} className="p-3 hover:bg-slate-50 rounded-lg transition-colors border border-transparent hover:border-slate-100">
+                    <div className="flex justify-between items-start mb-1">
+                      <p className="text-xs font-medium text-slate-700 mb-1 flex-1 pr-2">{item.title}</p>
+                      <button 
+                        onClick={() => {
+                          onNavigate?.('restoration', 'approval');
+                          setPopoverOpen(false);
+                        }}
+                        className="text-[10px] text-blue-600 font-bold hover:underline shrink-0"
+                      >
+                        查看详情
+                      </button>
+                    </div>
                     <div className="flex items-center text-[10px] text-slate-400">
                       <Clock className="w-3 h-3 mr-1" /> {item.time}
                     </div>
@@ -94,10 +108,21 @@ const Header = ({ activeModuleId, onModuleChange }: HeaderProps) => {
                   <AlertTriangle className="w-3 h-3 text-red-500" /> 待处理告警
                 </div>
                 {pendingAlarms.map((item) => (
-                  <div key={item.id} className="p-3 hover:bg-red-50 rounded-lg cursor-pointer transition-colors border border-transparent hover:border-red-100">
+                  <div key={item.id} className="p-3 hover:bg-red-50 rounded-lg transition-colors border border-transparent hover:border-red-100">
                     <div className="flex justify-between items-start mb-1">
-                      <p className="text-xs font-bold text-red-700">{item.title}</p>
-                      <Badge className="bg-red-500 text-white text-[9px] px-1.5 py-0 h-4 border-none">{item.level}</Badge>
+                      <p className="text-xs font-bold text-red-700 flex-1 pr-2">{item.title}</p>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <Badge className="bg-red-500 text-white text-[9px] px-1.5 py-0 h-4 border-none">{item.level}</Badge>
+                        <button 
+                          onClick={() => {
+                            onNavigate?.('safety', 'alarm');
+                            setPopoverOpen(false);
+                          }}
+                          className="text-[10px] text-blue-600 font-bold hover:underline"
+                        >
+                          查看详情
+                        </button>
+                      </div>
                     </div>
                     <div className="flex items-center text-[10px] text-red-400/80">
                       <Clock className="w-3 h-3 mr-1" /> {item.time}
@@ -105,10 +130,6 @@ const Header = ({ activeModuleId, onModuleChange }: HeaderProps) => {
                   </div>
                 ))}
               </div>
-            </div>
-            
-            <div className="p-3 border-t bg-slate-50 text-center">
-              <button className="text-[11px] text-blue-600 font-bold hover:underline">查看所有通知中心消息</button>
             </div>
           </PopoverContent>
         </Popover>

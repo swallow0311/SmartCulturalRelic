@@ -219,7 +219,7 @@ const Index = () => {
 
   return (
     <div className="h-screen flex flex-col bg-slate-50 overflow-hidden">
-      <Header activeModuleId={activeModuleId} onModuleChange={handleModuleChange} />
+      <Header activeModuleId={activeModuleId} onModuleChange={handleModuleChange} onNavigate={navigateTo} />
       <div className="flex flex-1 overflow-hidden">
         {!hideSidebar && <Sidebar menus={activeModule.menus.filter(m => !['overview', 'basic-info', 'publicity'].includes(m.id))} activeMenuId={activeMenuId} onMenuChange={handleMenuChange} />}
         <main className="flex-1 overflow-y-auto flex flex-col">
